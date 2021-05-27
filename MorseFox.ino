@@ -19,6 +19,12 @@
 #define PIN_BTN 4
 #endif
 
+//Configuration
+string morseMessage = "ZS6STN";
+int repeatTimes = 3;
+int delayBetweenRepeatsSeconds = 2;
+int delaySilentTimeSeconds = 10;
+  
 // Construct a cww_MorseTx instance that will send Morse Code at 15 words
 // per minute on I/O pin 2. Output is active HIGH.
 cww_MorseTx morse(PIN_LED, CW_SPEED);
@@ -41,15 +47,13 @@ void setup() {
 }
 
 void loop() {
-  string morseMessage = "ZS6STN";
-  int repeatTimes = 3;
   
   // Send a string in Morse Code
   for (int i = 0; i < repeatTimes; i++)
   {
     morseWithTone.send(morseMessage);
-    delay(2000);
+    delay(delayBetweenRepeatsSeconds * 1000);
   }
 
-  delay(5000);
+  delay(delaySilentTimeSeconds * 1000);
 }
