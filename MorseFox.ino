@@ -14,7 +14,7 @@
 #define PIN_SND 16
 #define PIN_BTN 4
 #else
-#define PIN_LED 2
+#define PIN_LED 13
 #define PIN_SND 3
 #define PIN_BTN 4
 #endif
