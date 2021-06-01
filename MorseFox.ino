@@ -1,8 +1,3 @@
-// The next three lines are optional and are used to change the tone channel from the default of channel 0.
-//#ifdef ESP32
-//#define TONE_CHANNEL 15
-//#endif
-
 #include <cww_MorseTx.h>
 
 #define CW_SPEED 15
@@ -25,30 +20,11 @@ int repeatTimes = 3;
 int delayBetweenRepeatsSeconds = 2;
 int delaySilentTimeSeconds = 10;
   
-// Construct a cww_MorseTx instance that will send Morse Code at 15 words
-// per minute on I/O pin 2. Output is active HIGH.
-//cww_MorseTx morse(PIN_LED, CW_SPEED);
-
-// Construct a cww_MorseTx instance that will send Morse Code at 15 words
-// per minute on I/O pin 2. Output is active LOW.
-//cww_MorseTx morseInverted(PIN_LED, CW_SPEED, true);
-
-// Construct a cww_MorseTx instance that will send Morse Code at 15 words
-// per minute on I/O pin 2 with a 1000 Hz sidetone on I/O pin 3. Output
-// is active HIGH.
 cww_MorseTx morseWithTone(PIN_LED, CW_SPEED, PIN_SND, TONE_FREQ);
 
-// Construct a cww_MorseTx instance that will send Morse Code at 15 words
-// per minute on I/O pin 2 with a 1000 Hz sidetone on I/O pin 3. Output
-// is active LOW.
-//cww_MorseTx morseWithToneInverted(PIN_LED, CW_SPEED, PIN_SND, TONE_FREQ, true);
-
-void setup() {
-}
+void setup() {}
 
 void loop() {
-  
-  // Send a string in Morse Code
   for (int i = 0; i < repeatTimes; i++)
   {
     morseWithTone.send(morseMessage.c_str());
